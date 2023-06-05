@@ -36,7 +36,7 @@ Run the script to fix some issues in the PARSEC components and check for depende
 
 ```
 cd ..
-sudo ./repair.sh
+sudo bash repair.sh
 ```
 
 Next, we will start compiling the components. Due to the limitations of TEE's own functions and to maintain consistency between tests among different TEEs, we need to measure the compiled components using direct launch commands. To avoid the impact of TEE initialization (which is present in SGX but not in SEV and CSV), we will use the hooks library provided in PARSEC to output the running time of the components directly.
@@ -61,7 +61,35 @@ This may take some time. After the compilation is complete, you can use the comm
 Now, run the script to extract the component's execution commands from the files and write them into each component's testing script. At this step, you can specify the dataset you want to use, for example:
 
 ```
+sudo bash decompress.sh -s simmedium
 ```
 
+###### Prepare for SEV
 
+By running the script  `prepare-SEV.sh`, the specific run script is written to the directory of each component
 
+```
+bash prepare-SEV.sh
+```
+
+Then you could use `run-all.sh` to do the test, such as
+
+```
+bash run-all.sh -t Threads -w warm-up-times -e execution-time
+```
+
+###### Prepare for CSV
+
+By running the script  `prepare-CSV.sh`, the specific run script is written to the directory of each component
+
+```
+bash prepare-CSV.sh
+```
+
+Then you could use `run-all.sh` to do the test, such as
+
+```
+bash run-all.sh -t Threads -w warm-up-times -e execution-time
+```
+
+###### 

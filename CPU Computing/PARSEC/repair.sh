@@ -4,11 +4,11 @@
 #sudo apt-get install locales
 #sudo locale-gen en_US.UTF-8
 #sudo update-locale LANG=en_US.UTF-8
-cd parsec-3.0/pkgs/libs/ssl/src/doc/apps
+cd pkgs/libs/ssl/src/doc/apps
 sed -i.bak 's/item \([0-9]\+\)/item C<\1>/g' *
 cd ../ssl
 sed -i.bak 's/item \([0-9]\+\)/item C<\1>/g' *
-cd ../../../../../../..
+cd ../../../../../..
 
 
 # For ferret
